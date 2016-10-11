@@ -16,15 +16,15 @@ exports.asyncAnswers = {
   },
 
   manipulateRemoteData: function(url) {
-    var def = $.Deferred();
-
-    $.get(url).then(function(rsp){
-        var ppl = $.map(rsp.people, function(person){
-            return person.name
-        })
-        def.resolve(ppl.sort())
-    })
-
-    return def.promise();
+    promise = new Promise(
+            function (resolve, reject) {
+                $.get(url).then(function(rsp){
+                    var ppl = $.map(rsp.people, function(person){
+                        return person.name
+                    })
+                    resolve(ppl.sort())
+                })
+            });
+    return promise
   }
 };

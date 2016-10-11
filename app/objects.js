@@ -16,7 +16,6 @@ exports.objectsAnswers = {
                     return k + ': ' + v;
                 }
         })
-        console.log(obj_arr)
         return obj_arr;
   }
 };
